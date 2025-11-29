@@ -5,6 +5,7 @@ import { RoomCard } from '../components/rooms/RoomCard';
 import { SearchForm } from '../components/rates/SearchForm';
 import { Button } from '../components/ui/Button';
 import { ArrowRight } from 'lucide-react';
+import { SignUpCard } from '../components/rates/SignUpCard';
 
 const ROOMS = [
     {
@@ -38,9 +39,21 @@ export default function RatesPage() {
     const [selectedRoom, setSelectedRoom] = useState(null);
     const [searchParams, setSearchParams] = useState(() => {
         const saved = localStorage.getItem('booking_search');
-        return saved ? JSON.parse(saved) : {
-            checkIn: '',
-            checkOut: '',
+        if (saved) {
+            return JSON.parse(saved);
+        }
+
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        const formatDate = (date) => {
+            return date.toISOString().split('T')[0];
+        };
+
+        return {
+            checkIn: formatDate(today),
+            checkOut: formatDate(tomorrow),
             guests: 1
         };
     });
@@ -65,6 +78,9 @@ export default function RatesPage() {
     const handleSelectRoom = (room) => {
         setSelectedRoom(room);
         localStorage.setItem('booking_room', JSON.stringify(room));
+        // Auto-navigate to next step
+        localStorage.setItem('booking_search', JSON.stringify(searchParams));
+        navigate('/guest');
     };
 
     const handleNext = () => {
@@ -94,19 +110,10 @@ export default function RatesPage() {
                             onSelect={handleSelectRoom}
                         />
                     ))}
+                    <SignUpCard />
                 </div>
 
-                <div className="flex justify-end pt-6 border-t">
-                    <Button
-                        size="lg"
-                        disabled={!selectedRoom}
-                        onClick={handleNext}
-                        className="gap-2"
-                    >
-                        Continue to Guest Details
-                        <ArrowRight className="w-4 h-4" />
-                    </Button>
-                </div>
+
             </div>
         </Layout>
     );

@@ -4,14 +4,13 @@ import { Check } from 'lucide-react';
 
 const steps = [
     { id: 1, name: 'Rates & Rooms' },
-    { id: 2, name: 'Guest Info' },
-    { id: 3, name: 'Payment' },
-    { id: 4, name: 'Confirmation' },
+    { id: 2, name: 'Check Out' },
+    { id: 3, name: 'Confirmation' },
 ];
 
 export function ProgressSteps({ currentStep }) {
     return (
-        <div className="w-full py-6 bg-slate-50 border-b">
+        <div className="w-full py-6 bg-slate-50">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-center">
                     {steps.map((step, index) => {
