@@ -5,7 +5,7 @@ import { Wifi, Tv, Coffee, Users } from 'lucide-react';
 
 export function RoomCard({ room, onSelect, isSelected }) {
     return (
-        <Card className={`overflow-hidden transition-all hover:shadow-lg ${isSelected ? 'ring-2 ring-primary' : ''}`}>
+        <Card className={`overflow-hidden transition-all hover:shadow-lg flex flex-col h-full ${isSelected ? 'ring-2 ring-primary' : ''}`}>
             <div className="aspect-video w-full bg-slate-200 relative">
                 <img
                     src={room.image}
@@ -16,14 +16,14 @@ export function RoomCard({ room, onSelect, isSelected }) {
                     ${room.price} / night
                 </div>
             </div>
-            <CardHeader>
+            <CardHeader className="flex-grow">
                 <CardTitle className="flex justify-between items-start">
                     <span>{room.name}</span>
                 </CardTitle>
                 <p className="text-slate-500 text-sm mt-2">{room.description}</p>
             </CardHeader>
-            <CardContent>
-                <div className="flex gap-4 text-slate-600">
+            <CardFooter className="mt-auto flex-col gap-4">
+                <div className="flex gap-4 text-slate-600 w-full">
                     <div className="flex items-center gap-1 text-sm">
                         <Users className="w-4 h-4" />
                         <span>{room.capacity} Guests</span>
@@ -37,8 +37,6 @@ export function RoomCard({ room, onSelect, isSelected }) {
                         <span>TV</span>
                     </div>
                 </div>
-            </CardContent>
-            <CardFooter>
                 <Button
                     className="w-full"
                     variant={isSelected ? "default" : "outline"}
