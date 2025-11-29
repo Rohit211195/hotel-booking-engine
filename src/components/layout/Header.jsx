@@ -1,5 +1,6 @@
 import React from 'react';
-import { User, Hotel } from 'lucide-react';
+import { Hotel } from 'lucide-react';
+import { Button } from '../ui/Button';
 
 export function Header() {
     return (
@@ -13,12 +14,9 @@ export function Header() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-primary cursor-pointer">
-                        <div className="bg-slate-100 p-2 rounded-full">
-                            <User className="h-5 w-5" />
-                        </div>
-                        <span>John Doe</span>
-                    </div>
+                    <Button variant="default">
+                        Sign up
+                    </Button>
                 </div>
             </div>
         </header>
