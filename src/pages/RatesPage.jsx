@@ -62,12 +62,8 @@ export default function RatesPage() {
         // Clear previous booking data when starting a new flow
         localStorage.removeItem('booking_guest');
         localStorage.removeItem('booking_reference');
+        localStorage.removeItem('booking_room');
         // Keep booking_search as user preference
-
-        const savedRoom = localStorage.getItem('booking_room');
-        if (savedRoom) {
-            setSelectedRoom(JSON.parse(savedRoom));
-        }
     }, []);
 
     const handleSearch = (params) => {
