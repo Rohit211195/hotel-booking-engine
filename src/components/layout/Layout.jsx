@@ -1,6 +1,5 @@
 import React from 'react';
 import { Header } from './Header';
-import { Footer } from './Footer';
 import { ProgressSteps } from '../ui/ProgressSteps';
 
 export function Layout({ children, currentStep }) {
@@ -11,7 +10,6 @@ export function Layout({ children, currentStep }) {
             <main className="flex-1 container mx-auto px-4 py-8">
                 {children}
             </main>
-            <Footer />
         </div>
     );
 }

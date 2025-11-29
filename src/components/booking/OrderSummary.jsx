@@ -8,12 +8,12 @@ export function OrderSummary({ room }) {
     const total = room.price + tax;
 
     return (
-        <Card className="bg-slate-50">
+        <Card className="bg-white">
             <CardHeader>
                 <CardTitle className="text-lg">Order Summary</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-                <div className="aspect-video w-full rounded-md overflow-hidden bg-slate-200">
+                <div className="aspect-video w-full rounded-md overflow-hidden">
                     <img
                         src={room.image}
                         alt={room.name}
